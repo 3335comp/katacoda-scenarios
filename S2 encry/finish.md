@@ -1,1 +1,1 @@
-Congratulations, you have learned how to make use of the autocommit, Commit, and Rollback statement.
+Congratulations, you have learned how to InnoDB Data-at-Rest Encryption.

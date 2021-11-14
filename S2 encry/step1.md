@@ -1,9 +1,12 @@
-First, start a new Docker container for a MySQL Server. docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest{{execute}}
+In MySQL, autocommit is on by default for InnoDB, here in this case, we are going to teach you how to disable this option.
 
-docker exec -it mysql bash{{execute}}
+First, we want to setup a enviroment first:
+Pulliing the MySQL image and running it on a docker container
 
-docker exec -it mysql bash{{execute}}
+ `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d percona:latest`{{execute}} 
 
-mysql -u root -p{{execute}}
+Run the MySQL container in Interactive Mode to get access of the bash shell of the container
+ `docker exec -it mysql bash`{{execute}} 
 
-CREATE USER 'test'@'localhost' IDENTIFIED BY 'pass123546';{{execute}}
+Now we can login into our mySQL database with user ROOT
+ `mysql -u root -proot`{{execute}} 

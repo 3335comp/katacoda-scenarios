@@ -3,6 +3,7 @@ Creating a Database 'teat'
 `CREATE DATABASE test;`{{execute}} 
 
 Selecting a Database 'test'
+
 `use test`{{execute}} 
 
 To enable encryption for a new file-per-table tablespace, specify the ENCRYPTION option in a CREATE TABLE statement. 

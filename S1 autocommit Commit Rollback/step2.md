@@ -36,7 +36,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  Assume some people change the info inside
  `INSERT INTO tester VALUES (10, 'Bob');`{{execute}} 
 
- `INSERT DELETE tester VALUES (10, 'Alice');`{{execute}} 
+ `DELETE FROM tester WHERE name = 'Alice';`{{execute}} 
 
  `SELECT * FROM tester;`{{execute}}
 

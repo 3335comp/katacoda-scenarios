@@ -26,6 +26,15 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `INSERT INTO tester VALUES (10, 'Alice');`{{execute}} 
 
  `SELECT * FROM tester;`{{execute}}
+ Result should be like this
+ <pre>
+ mysql> SELECT * FROM tester;
+ +------+-------+
+ | age  | name  |
+ +------+-------+
+ |   10 | Alice |
+ +------+-------+
+ </pre>
  
  After finsihed the information setup, we will process the ROLLBACK funactions:
  First, we will using COMMIT to create a save log here.
@@ -41,31 +50,30 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `DELETE FROM tester WHERE name = 'Alice';`{{execute}} 
 
  `SELECT * FROM tester;`{{execute}}
+ Result should be like this
+ <pre>
+ mysql> SELECT * FROM tester;
+ +------+------+
+ | age  | name |
+ +------+------+
+ |   10 | Bob  |
+ +------+------+
+ </pre>
+
+
 
  `ROLLBACK;`{{execute}}
 
  After that check it again.
  
  `SELECT * FROM tester;`{{execute}}
+ Result should be like this
+ <pre>
+ mysql> SELECT * FROM tester;
+ +------+-------+
+ | age  | name  |
+ +------+-------+
+ |   10 | Alice |
+ +------+-------+
+ </pre>
 
-
-
-
-<pre>
-[ -d /home/scrapbook/tutorial/.git ] && echo "done"
-</pre>
-
-If you run `git init`{{execute}}, you will be allowed to continue.
-
-The `index.json` example is:
-<pre>
-"details": {
-    "steps": [
-        {
-            "title": "Step 1 - Verify",
-            "text": "step1.md",
-            "verify": "step1-verify.sh"
-        }
-    ]
-}
-</pre>

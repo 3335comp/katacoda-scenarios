@@ -1,39 +1,43 @@
-In this scenario, we are going to teach our users how to make use of the autocommit, Commit, and Rollback functions introduced in InnoDB
+The master encryption key should be rotated periodically and whenever you suspect that the key has been compromised.
 
-Typically individual DML (Insert, Update, Delete) statements are performed in an autocommit transaction, 
-which those commands are committed as soon as the statement successfully completes. 
-There will be no opportunity to roll back the database to the state prior to the statement if autocommit is enabled. 
-When something goes wrong, the only restoration option available is to reconstruct the data from a backup (providing one exists).
+Rotating the master encryption key only changes the master encryption key and re-encrypts tablespace keys. It does not decrypt or re-encrypt associated tablespace data.
 
-In MySQL, autocommit is on by default for InnoDB, here in this case, we are going to teach you how to disable this option.
+To rotate the master encryption key, run by command:
 
-First, we want to setup a enviroment first:
-Pulliing the MySQL image and running it on a docker container
+`ALTER INSTANCE ROTATE INNODB MASTER KEY;`{{execute}} 
 
- `docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest`{{execute}} 
+When the ENCRYPTION option is specified in a CREATE TABLE or ALTER TABLE statement, it is recorded in the CREATE_OPTIONS column of INFORMATION_SCHEMA.TABLES. This column can be queried to identify tables that reside in encrypted file-per-table tablespaces.
 
-Run the MySQL container in Interactive Mode to get access of the bash shell of the container
- `docker exec -it mysql bash`{{execute}} 
+Check by command:
 
-Now we can login into our mySQL database with user ROOT
- `mysql -u root -proot`{{execute}} 
-
-
+`SELECT TABLE_SCHEMA, TABLE_NAME, CREATE_OPTIONS FROM INFORMATION_SCHEMA.TABLES
+       WHERE CREATE_OPTIONS LIKE '%ENCRYPTION%';`{{execute}} 
+       
+Result should be like this
 <pre>
-[ -d /home/scrapbook/tutorial/.git ] && echo "done"
+mysql> SELECT TABLE_SCHEMA, TABLE_NAME, CREATE_OPTIONS FROM INFORMATION_SCHEMA.TABLES
+       WHERE CREATE_OPTIONS LIKE '%ENCRYPTION%';
++--------------+------------+----------------+
+| TABLE_SCHEMA | TABLE_NAME | CREATE_OPTIONS |
++--------------+------------+----------------+
+| test         | t1         | ENCRYPTION="Y" |
++--------------+------------+----------------+
 </pre>
 
-If you run `git init`{{execute}}, you will be allowed to continue.
+If the CREATE_OPTIONS is "ENCRYPTION="Y""; that mean the encryption function is enabled.
 
-The `index.json` example is:
+We can also query INFORMATION_SCHEMA.INNODB_SYS_TABLESPACES to retrieve information about the tablespace associated with a particular schema and table.
+
+By command:
+
+`SELECT SPACE, NAME, SPACE_TYPE FROM INFORMATION_SCHEMA.INNODB_SYS_TABLESPACES WHERE NAME='test/t1';`{{execute}} 
+       
+Result should be like this
 <pre>
-"details": {
-    "steps": [
-        {
-            "title": "Step 1 - Verify",
-            "text": "step1.md",
-            "verify": "step1-verify.sh"
-        }
-    ]
-}
+mysql> SELECT SPACE, NAME, SPACE_TYPE FROM INFORMATION_SCHEMA.INNODB_SYS_TABLESPACES WHERE NAME='test/t1';
++-------+---------+------------+
+| SPACE | NAME    | SPACE_TYPE |
++-------+---------+------------+
+|     3 | test/t1 | Single     |
++-------+---------+------------+
 </pre>

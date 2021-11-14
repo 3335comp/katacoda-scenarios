@@ -1,39 +1,23 @@
-In this scenario, we are going to teach our users how to make use of the autocommit, Commit, and Rollback functions introduced in InnoDB
+A keyring plugin must be installed and configured. Keyring plugin installation is performed at startup using the early-plugin-load option. Early loading ensures that the plugin is available prior to initialization of the InnoDB storage engine.
 
-Typically individual DML (Insert, Update, Delete) statements are performed in an autocommit transaction, 
-which those commands are committed as soon as the statement successfully completes. 
-There will be no opportunity to roll back the database to the state prior to the statement if autocommit is enabled. 
-When something goes wrong, the only restoration option available is to reconstruct the data from a backup (providing one exists).
+Install by command:
+`INSTALL PLUGIN keyring_file SONAME 'keyring_file.so';`{{execute}} 
 
-In MySQL, autocommit is on by default for InnoDB, here in this case, we are going to teach you how to disable this option.
+To verify that a keyring plugin is active, use the SHOW PLUGINS statement or query the INFORMATION_SCHEMA.PLUGINS table.
 
-First, we want to setup a enviroment first:
-Pulliing the MySQL image and running it on a docker container
-
- `docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest`{{execute}} 
-
-Run the MySQL container in Interactive Mode to get access of the bash shell of the container
- `docker exec -it mysql bash`{{execute}} 
-
-Now we can login into our mySQL database with user ROOT
- `mysql -u root -proot`{{execute}} 
-
-
+Check by command:
+`SELECT PLUGIN_NAME, PLUGIN_STATUS
+       FROM INFORMATION_SCHEMA.PLUGINS
+       WHERE PLUGIN_NAME LIKE 'keyring%';`{{execute}} 
 <pre>
-[ -d /home/scrapbook/tutorial/.git ] && echo "done"
+mysql> SELECT PLUGIN_NAME, PLUGIN_STATUS
+       FROM INFORMATION_SCHEMA.PLUGINS
+       WHERE PLUGIN_NAME LIKE 'keyring%';
++--------------+---------------+
+| PLUGIN_NAME  | PLUGIN_STATUS |
++--------------+---------------+
+| keyring_file | ACTIVE        |
++--------------+---------------+
 </pre>
 
-If you run `git init`{{execute}}, you will be allowed to continue.
-
-The `index.json` example is:
-<pre>
-"details": {
-    "steps": [
-        {
-            "title": "Step 1 - Verify",
-            "text": "step1.md",
-            "verify": "step1-verify.sh"
-        }
-    ]
-}
-</pre>
+If the PLUGIN_STATUS is "ACTIVE"; that mean the encryption function can be use.

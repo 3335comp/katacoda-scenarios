@@ -18,7 +18,11 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `use testDB;`{{execute}} 
 
  `CREATE TABLE tester (age INT, name CHAR (20), INDEX (age));`{{execute}} 
-
+ 
+ Do a transaction with autocommit turned on.
+ 
+ `START TRANSACTION;`{{execute}} 
+ 
  `show tables;`{{execute}} 
 
  Insert show orgin info inside

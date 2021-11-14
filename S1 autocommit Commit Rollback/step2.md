@@ -64,7 +64,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  |   10 | Bob  |
  +------+------+
  </pre>
- Last, we can use ROLLBACK command to roll back the information  
+ Last, we can use ROLLBACK command to roll back the hacked information to correct information  
  `ROLLBACK;`{{execute}}
 
  After that check it again.

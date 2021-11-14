@@ -6,7 +6,7 @@ Install by command:
 To verify that a keyring plugin is active, use the SHOW PLUGINS statement or query the INFORMATION_SCHEMA.PLUGINS table.
 
 Check by command:
-`SELECT PLUGIN_NAME, PLUGIN_STATUS
+ `SELECT PLUGIN_NAME, PLUGIN_STATUS
        FROM INFORMATION_SCHEMA.PLUGINS
        WHERE PLUGIN_NAME LIKE 'keyring%';`{{execute}} 
        

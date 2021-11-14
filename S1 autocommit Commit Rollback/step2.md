@@ -27,7 +27,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `SELECT * FROM tester;`{{execute}}
  
  After finsihed the information setup, we will process the ROLLBACK funactions:
- First, we will using <pre>COMMIT</pre>
+ First, we will using COMMIT
  Create a save log here.
  `COMMIT;`{{execute}} 
 

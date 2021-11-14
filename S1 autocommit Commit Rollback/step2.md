@@ -22,18 +22,20 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `show tables;`{{execute}} 
 
  Insert show orgin info inside
+ 
  `INSERT INTO tester VALUES (10, 'Alice');`{{execute}} 
 
  `SELECT * FROM tester;`{{execute}}
  
  After finsihed the information setup, we will process the ROLLBACK funactions:
- First, we will using COMMIT
- Create a save log here.
+ First, we will using COMMIT to create a save log here.
+ 
  `COMMIT;`{{execute}} 
 
  `SET autocommit=0;`{{execute}} 
 
  Assume some people change the info inside
+ 
  `INSERT INTO tester VALUES (10, 'Bob');`{{execute}} 
 
  `DELETE FROM tester WHERE name = 'Alice';`{{execute}} 
@@ -43,6 +45,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `ROLLBACK;`{{execute}}
 
  After that check it again.
+ 
  `SELECT * FROM tester;`{{execute}}
 
 

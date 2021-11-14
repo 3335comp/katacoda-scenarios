@@ -12,11 +12,11 @@
                 "text": "step2.md"
             },
             {
-                "title": "Step 3 - ",
+                "title": "Step 3 - Enabling File-Per-Table Tablespace Encryption",
                 "text": "step3.md"
             },
             {
-                "title": "Step 4 - ",
+                "title": "Step 4 - Identifying Encrypted Tablespaces",
                 "text": "step4.md"
             }			
         ],

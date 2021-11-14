@@ -1,5 +1,5 @@
 {
-    "title": "S1 autocommit, Commit, and Rollback",
+    "title": "S1 Autocommit, Commit, and Rollback",
     "description": "InnoDB autocommit, Commit, and Rollback",
     "details": {
         "steps": [

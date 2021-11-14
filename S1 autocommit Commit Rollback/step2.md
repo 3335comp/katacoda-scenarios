@@ -26,6 +26,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `INSERT INTO tester VALUES (10, 'Alice');`{{execute}} 
 
  `SELECT * FROM tester;`{{execute}}
+ 
  Result should be like this
  <pre>
  mysql> SELECT * FROM tester;
@@ -35,7 +36,6 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  |   10 | Alice |
  +------+-------+
  </pre>
- 
  After finsihed the information setup, we will process the ROLLBACK funactions:
  First, we will using COMMIT to create a save log here.
  
@@ -50,6 +50,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  `DELETE FROM tester WHERE name = 'Alice';`{{execute}} 
 
  `SELECT * FROM tester;`{{execute}}
+ 
  Result should be like this
  <pre>
  mysql> SELECT * FROM tester;
@@ -59,9 +60,7 @@ Secondly, after seting up a MYSQL enviroment, we will create a testing database 
  |   10 | Bob  |
  +------+------+
  </pre>
-
-
-
+ 
  `ROLLBACK;`{{execute}}
 
  After that check it again.

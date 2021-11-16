@@ -1,6 +1,6 @@
 {
-    "title": "S2 InnoDB Data-at-Rest Encryption",
-    "description": "InnoDB Data-at-Rest Encryption",
+    "title": "The Password Validation",
+    "description": "The Password Validation",
     "details": {
         "steps": [
             {
@@ -12,11 +12,11 @@
                 "text": "step2.md"
             },
             {
-                "title": "Step 3 - Enabling File-Per-Table Tablespace Encryption",
+                "title": "Step 3 - Examples",
                 "text": "step3.md"
             },
             {
-                "title": "Step 4 - Identifying Encrypted Tablespaces",
+                "title": "Step 4 - To check a password requirement",
                 "text": "step4.md"
             }			
         ],

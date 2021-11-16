@@ -6,12 +6,10 @@
             {
                 "title": "Step 1 - Setting up the environment",
                 "text": "step1.md"
-		"verify": "step1-verify.sh"
             },
             {
                 "title": "Step 2 - Install plugin",
                 "text": "step2.md"
-		"answer": "step2-answer.md"
             },
             {
                 "title": "Step 3 - Examples",

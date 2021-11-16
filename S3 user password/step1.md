@@ -11,3 +11,7 @@ Run the MySQL container in Interactive Mode to get access of the bash shell of t
 Now we can login into our mySQL database with user ROOT
 
 `mysql -u root -proot`{{execute}} 
+
+<pre>
+[ -d /home/scrapbook/tutorial/.git ] && echo "done"
+</pre>

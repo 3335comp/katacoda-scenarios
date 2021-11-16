@@ -1,3 +1,3 @@
 #!/bin/bash
 
-[ "mysql -u root -proot" ] && echo "done"
+[ -d /home/scrapbook/tutorial/.git ] && echo "done"

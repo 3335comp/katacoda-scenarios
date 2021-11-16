@@ -1,6 +1,23 @@
-Creating a Database 'teat'
+validate_password checks the cleartext password in the following statement. Under the default password policy, which requires passwords to be at least 8 characters long, the password is weak and the statement produces an error:
 
-`CREATE DATABASE test;`{{execute}} 
+`CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'newpassword';`{{execute}} 
+
+<pre>
+mysql> CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'newpassword';
+ERROR 1819 (HY000): Your password does not satisfy the current
+policy requirements
+</pre>
+
+
+validate_password checks the cleartext password in the following statement. Under the default password policy, which requires passwords to be at least 8 characters long, the password is weak and the statement produces an error:
+
+`ALTER USER USER() IDENTIFIED BY 'abc';`{{execute}} 
+
+<pre>
+mysql> ALTER USER USER() IDENTIFIED BY 'abc';
+ERROR 1819 (HY000): Your password does not satisfy the current
+policy requirements
+</pre>
 
 Selecting a Database 'test'
 

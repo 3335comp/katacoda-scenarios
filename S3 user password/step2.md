@@ -8,7 +8,7 @@ To verify that a keyring plugin is active, use the SHOW PLUGINS statement or que
 Check by command:
  `SELECT PLUGIN_NAME, PLUGIN_STATUS
        FROM INFORMATION_SCHEMA.PLUGINS
-       WHERE PLUGIN_NAME LIKE 'validate%'`{{execute}} 
+       WHERE PLUGIN_NAME LIKE 'validate%';`{{execute}} 
        
 Result should be like this
 <pre>

@@ -1,6 +1,6 @@
 {
-    "title": "S2 InnoDB Data-at-Rest Encryption",
-    "description": "InnoDB Data-at-Rest Encryption",
+    "title": "S3 Configuring MySQL to Use Encrypted Connections",
+    "description": "Configuring MySQL to Use Encrypted Connections",
     "details": {
         "steps": [
             {

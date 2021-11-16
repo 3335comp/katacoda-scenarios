@@ -1,3 +1,3 @@
 #!/bin/bash
 
-[ -d /home/scrapbook/tutorial/.git ] && echo "done"
+[ -d mysql ] && echo "done"

@@ -11,6 +11,7 @@
             {
                 "title": "Step 2 - Install plugin",
                 "text": "step2.md"
+		"answer": "step2-answer.md"
             },
             {
                 "title": "Step 3 - Examples",

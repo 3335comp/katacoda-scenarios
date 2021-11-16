@@ -1,25 +1,25 @@
-A keyring plugin must be installed and configured. Keyring plugin installation is performed at startup using the early-plugin-load option. Early loading ensures that the plugin is available prior to initialization of the InnoDB storage engine.
+INSTALL PLUGIN loads the plugin, and also registers it in the mysql.plugins system table to cause the plugin to be loaded for each subsequent normal server startup without the need for --plugin-load-add.
 
 Install by command:
-`INSTALL PLUGIN keyring_file SONAME 'keyring_file.so';`{{execute}} 
+`INSTALL PLUGIN validate_password SONAME 'validate_password.so';`{{execute}} 
 
 To verify that a keyring plugin is active, use the SHOW PLUGINS statement or query the INFORMATION_SCHEMA.PLUGINS table.
 
 Check by command:
  `SELECT PLUGIN_NAME, PLUGIN_STATUS
        FROM INFORMATION_SCHEMA.PLUGINS
-       WHERE PLUGIN_NAME LIKE 'keyring%';`{{execute}} 
+       WHERE PLUGIN_NAME LIKE 'validate%'`{{execute}} 
        
 Result should be like this
 <pre>
 mysql> SELECT PLUGIN_NAME, PLUGIN_STATUS
        FROM INFORMATION_SCHEMA.PLUGINS
-       WHERE PLUGIN_NAME LIKE 'keyring%';
-+--------------+---------------+
-| PLUGIN_NAME  | PLUGIN_STATUS |
-+--------------+---------------+
-| keyring_file | ACTIVE        |
-+--------------+---------------+
+       WHERE PLUGIN_NAME LIKE 'validate%';
++-------------------+---------------+
+| PLUGIN_NAME       | PLUGIN_STATUS |
++-------------------+---------------+
+| validate_password | ACTIVE        |
++-------------------+---------------+
 </pre>
 
-If the PLUGIN_STATUS is "ACTIVE"; that mean the encryption function can be use.
+If the PLUGIN_STATUS is "ACTIVE"; that mean the function can be use.

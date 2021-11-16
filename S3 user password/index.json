@@ -6,6 +6,7 @@
             {
                 "title": "Step 1 - Setting up the environment",
                 "text": "step1.md"
+		"verify": "step1-verify.sh"
             },
             {
                 "title": "Step 2 - Install plugin",

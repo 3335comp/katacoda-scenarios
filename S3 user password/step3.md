@@ -1,4 +1,14 @@
-validate_password checks the cleartext password in the following statement. Under the default password policy, which requires passwords to be at least 8 characters long, the password is weak and the statement produces an error:
+This account-creation statement fails, even though the account is locked initially, because it does not include a password that satisfies the current password policy:
+
+`CREATE USER 'juanita'@'localhost' ACCOUNT LOCK;`{{execute}} 
+
+<pre>
+mysql> CREATE USER 'juanita'@'localhost' ACCOUNT LOCK;
+ERROR 1819 (HY000): Your password does not satisfy the current
+policy requirements
+</pre>
+
+validate_password checks the cleartext password in the following statement. Under the default password policy, which requires passwords to be at least 25 characters long, the password is weak and the statement produces an error:
 
 `CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'newpassword';`{{execute}} 
 
@@ -8,8 +18,16 @@ ERROR 1819 (HY000): Your password does not satisfy the current
 policy requirements
 </pre>
 
+Seccess:
 
-validate_password checks the cleartext password in the following statement. Under the default password policy, which requires passwords to be at least 8 characters long, the password is weak and the statement produces an error:
+`CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'ASDnewpasswordpasspasspass123456789123456897.';`{{execute}} 
+
+<pre>
+mysql> CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'ASDnewpasswordpasspasspass123456789123456897.';
+Query OK, 0 rows affected (0.01 sec)
+</pre>
+
+It also happen in ALTER,
 
 `ALTER USER USER() IDENTIFIED BY 'abc';`{{execute}} 
 
@@ -19,19 +37,13 @@ ERROR 1819 (HY000): Your password does not satisfy the current
 policy requirements
 </pre>
 
-Selecting a Database 'test'
+`ALTER USER 'jeffrey'@'localhost'
+       IDENTIFIED WITH mysql_native_password
+       AS '*0D3CED9BEC10A777AEC23CCC353A8C08A633045E';`{{execute}} 
 
-`use test`{{execute}} 
-
-To enable encryption for a new file-per-table tablespace, specify the ENCRYPTION option in a CREATE TABLE statement. 
- #The following example assumes that innodb_file_per_table is enabled.
-
-`CREATE TABLE t1 (c1 INT) ENCRYPTION='Y';`{{execute}} 
-
-To enable encryption for an existing file-per-table tablespace, specify the ENCRYPTION option in an ALTER TABLE statement.
-
-`ALTER TABLE t1 ENCRYPTION='Y';`{{execute}} 
-
-To disable encryption for file-per-table tablespace, set ENCRYPTION='N' using ALTER TABLE.
-
-`ALTER TABLE t1 ENCRYPTION='N';`{{execute}} 
+<pre>
+mysql> ALTER USER 'jeffrey'@'localhost'
+       IDENTIFIED WITH mysql_native_password
+       AS '*0D3CED9BEC10A777AEC23CCC353A8C08A633045E';
+Query OK, 0 rows affected (0.01 sec)
+</pre>

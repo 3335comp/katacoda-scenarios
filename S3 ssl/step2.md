@@ -1,14 +1,19 @@
 A keyring plugin must be installed and configured. Keyring plugin installation is performed at startup using the early-plugin-load option. Early loading ensures that the plugin is available prior to initialization of the InnoDB storage engine.
 
 Install by command:
-`INSTALL PLUGIN keyring_file SONAME 'keyring_file.so';`{{execute}} 
+`[mysqld]
+ssl_ca=ca.pem
+ssl_cert=server-cert.pem
+ssl_key=server-key.pem`{{execute}} 
 
 To verify that a keyring plugin is active, use the SHOW PLUGINS statement or query the INFORMATION_SCHEMA.PLUGINS table.
 
 Check by command:
- `SELECT PLUGIN_NAME, PLUGIN_STATUS
-       FROM INFORMATION_SCHEMA.PLUGINS
-       WHERE PLUGIN_NAME LIKE 'keyring%';`{{execute}} 
+ `[mysqld]
+ssl_ca=ca.pem
+ssl_cert=server-cert.pem
+ssl_key=server-key.pem
+require_secure_transport=ON`{{execute}} 
        
 Result should be like this
 <pre>
